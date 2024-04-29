@@ -88,6 +88,8 @@ func main() {
 }
 
 func join(joinAddr, raftAddr, nodeID string) error {
+	// 这里需要和post联合着看, 这里意味着向joinAddr 发送 请求,请求的数据如下{"addr": raftAddr, "id": nodeID},换句话说就是节点{"addr": raftAddr, "id": nodeID} 希望
+	// 加入cluster
 	b, err := json.Marshal(map[string]string{"addr": raftAddr, "id": nodeID})
 	if err != nil {
 		return err
